@@ -1,0 +1,92 @@
+
+package exampractice;
+
+
+import javafx.application.Application;
+
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Point2D;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+
+
+public class ExamPractice extends Application{
+
+    
+    @Override
+    public void start(Stage stage){
+    Button btn = new Button("+");
+    Button minus = new Button("-");
+    btn.setLayoutX(100);
+    btn.setLayoutY(120);
+    minus.setLayoutX(130);
+    minus.setLayoutY(120);
+    //Label output = new Label("Waiting on button");
+    //output.setLayoutX(100);
+    //output.setLayoutY(135);
+    TextField text1 = new TextField();
+    TextField text2 = new TextField();
+    TextField text3 = new TextField();
+    text1.setLayoutX(100);
+    text1.setLayoutY(20);
+    text2.setLayoutX(100);
+    text2.setLayoutY(50);
+    text3.setLayoutX(100);
+    text3.setLayoutY(80);
+    text3.setEditable(false);
+    
+    btn.setOnAction(new EventHandler<ActionEvent>(){
+    
+        @Override
+        public void handle(ActionEvent event){
+            String s1 = text1.getText();
+            String s2 = text2.getText();
+            int a = Integer.parseInt(s1);
+            int b = Integer.parseInt(s2);
+            int c = 0;
+            if(event.getSource() == btn){
+            c = a + b;
+            }
+            else if(event.getSource() == minus){
+            c = a - b;
+            }
+            String result = String.valueOf(c);
+            text3 = setText(result);                   //error                   
+        }
+    
+    });
+    
+    
+    
+    
+    
+   
+    
+    stage.setTitle("Button Prime");
+    Pane root = new Pane();
+    
+    root.getChildren().add(btn);
+    root.getChildren().addAll(text1,text2,text3,minus);
+    Scene sn = new Scene(root, 300, 300);
+    stage.setScene(sn);
+    stage.show();
+    
+ }
+    
+  
+    public static void main(String[] args) {
+        launch(args);
+    }
+    
+}
